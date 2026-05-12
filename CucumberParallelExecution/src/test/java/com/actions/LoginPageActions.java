@@ -42,34 +42,28 @@ public class LoginPageActions {
  	}
  	
     public void login() {
-    	File file = new File("C:\\Java-Selenium-Automation\\CucumberPageObjectExtentReport\\src\\test\\resources\\testdata.properties");
-  	  
-		FileInputStream fileInput = null;
-		try {
-			fileInput = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		Properties prop = new Properties();
-		
-		//load properties file
-		try {
-			prop.load(fileInput);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-		strUserName = prop.getProperty("username");
-		strPassword = prop.getProperty("password");
-		
-        // Fill user name
-        this.setUserName(strUserName);
-   
-        // Fill password
-        this.setPassword(strPassword);
-   
-        // Click Login button
-        this.clickLogin();
+
+    InputStream fileInput = getClass()
+            .getClassLoader()
+            .getResourceAsStream("testdata.properties");
+
+    if (fileInput == null) {
+        throw new RuntimeException("testdata.properties not found in src/test/resources");
     }
+
+    Properties prop = new Properties();
+
+    try {
+        prop.load(fileInput);
+    } catch (IOException e) {
+        throw new RuntimeException("Failed to load properties file", e);
+    }
+
+    String strUserName = prop.getProperty("username");
+    String strPassword = prop.getProperty("password");
+
+    this.setUserName(strUserName);
+    this.setPassword(strPassword);
+    this.clickLogin();
+	}
 }
