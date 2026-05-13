@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(
+/*@CucumberOptions(
          features = "src/test/resources/features",
          glue = "com.definitions1",
          plugin = {
@@ -19,10 +19,23 @@ import io.cucumber.testng.CucumberOptions;
 public class runnerTestNG1 extends AbstractTestNGCucumberTests{
 	
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
       return super.scenarios();
     }
+*/
 
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "com.definitions1",
+    plugin = {
+        "pretty",
+        "json:target/cucumber-reports/cucumber.json",
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+    }
+)
+public class runnerTestNG1 {
+}
 }
 
