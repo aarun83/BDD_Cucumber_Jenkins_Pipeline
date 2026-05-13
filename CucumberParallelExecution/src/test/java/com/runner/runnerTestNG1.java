@@ -23,6 +23,7 @@ public class runnerTestNG1 extends AbstractTestNGCucumberTests{
 	public Object[][] scenarios() {
       return super.scenarios();
     }
+}
 */
 
 @RunWith(Cucumber.class)
@@ -36,6 +37,5 @@ public class runnerTestNG1 extends AbstractTestNGCucumberTests{
     }
 )
 public class runnerTestNG1 {
-}
 }
 
