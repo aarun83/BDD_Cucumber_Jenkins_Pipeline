@@ -56,7 +56,7 @@ public class HelperClass {
 	        wait.set(new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)));
 
 	        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-	       driver.manage().window().setSize(new Dimension(1920,1080));
+	        webDriver.manage().window().setSize(new Dimension(1920,1080));
 	  }
 
 	  public static WebDriver getDriver() {
